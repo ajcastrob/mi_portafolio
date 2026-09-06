@@ -16,5 +16,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "vite-plugin-supersvg": "^0.0.7"
   }
 }
