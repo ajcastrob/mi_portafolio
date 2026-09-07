@@ -1,0 +1,387 @@
+---
+import { Image } from "astro:assets"
+import personal from "@/assets/personal.webp"
+import Badge from "@/components/badge/Badge.astro"
+---
+
+<style>
+  .home-hero {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px var(--space-24) var(--space-40);
+  }
+
+  .home-hero__grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: var(--space-24);
+    max-width: var(--max-width-content);
+    margin-inline: auto;
+    align-items: start;
+  }
+
+  /* Kicker */
+  .home-hero__kicker {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .home-hero__kicker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .home-hero__kicker-text {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-accent);
+    line-height: 1.2;
+  }
+
+  /* Heading */
+  .home-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  /* Subtitle */
+  .home-hero__copy {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-text-secondary);
+  }
+
+  .home-hero__copy p {
+    margin: 0;
+  }
+
+  /* CTA Button */
+  .home-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: 8px;
+    background-color: var(--color-text-primary);
+    color: var(--color-white);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    width: fit-content;
+    transition: opacity var(--duration-fast) var(--ease-out);
+
+    &:hover {
+      opacity: 0.85;
+      color: #fff;
+    }
+    &:after{
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #ffffff20;
+      border-radius: 9999px;
+      transition: all .35s;
+    }
+    &:hover:after{
+      width: 100%;
+    }   
+    &:active {
+    transform: scale(0.98);
+    }
+}
+
+  .home-hero__cta-accent {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: #22d3ee;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  .home-hero__cta-arrow {
+    font-size: 12px;
+    }
+
+  /* Tech Stack Badges */
+  .home-hero__badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+
+  /* Polaroid Figure */
+  .home-hero__figure {
+    position: relative;
+    background: var(--color-white);
+    padding: 14px 12px 20px 12px;
+    border-radius: 2px;
+    width: fit-content;
+    max-width: 335px;
+    margin: 0;
+    place-self: center;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 20px 35px rgba(44, 30, 20, 0.18);
+  }
+
+  .home-hero__figure::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 200, 150, 0.12) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .home-hero__image-wrap {
+    background: #f5f5f4;
+    border-radius: 0;
+    overflow: hidden;
+    aspect-ratio: 211 / 230;
+  }
+
+  .home-hero__figure :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .home-hero__caption {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 24px;
+    color: #44403c;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.2;
+  }
+
+  .home-hero__washi {
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    width: 113px;
+    height: 28px;
+    background: rgba(224, 231, 240, 0.75);
+    border-radius: 2px;
+    transform: rotate(20deg);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .home-hero__washi--bottom {
+    display: none;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.9);
+     }
+    50% {
+      transform: scale(1.1);
+     }
+    100%{
+      transform: scale(0.9);
+    } 
+  }
+
+  /* Desktop Layout (≥769px) */
+  @media (min-width: 769px) {
+    .home-hero {
+      padding: 48px var(--space-40) var(--space-64);
+    }
+
+    .home-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Kicker - Desktop */
+    .home-hero__kicker-text {
+      font-size: 30px;
+      color: #dc2626;
+    }
+
+    .home-hero__kicker-dot {
+      background-color: #dc2626;
+    }
+
+    /* Heading - Desktop */
+    .home-hero__title {
+      font-size: 48px;
+      line-height: 1.0;
+    }
+
+    /* Subtitle - Desktop */
+    .home-hero__copy {
+      font-size: 18px;
+      line-height: 28px;
+      color: #585860;
+    }
+
+    /* CTA Button - Desktop */
+    .home-hero__cta {
+      font-weight: 400;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      gap: 12px;
+    }
+
+    .home-hero__cta-accent {
+      border-radius: 9999px;
+    }
+
+    /* Badges - Desktop */
+    .home-hero__badges-container {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+
+    /* Polaroid - Desktop */
+    .home-hero__figure {
+      width: 347px;
+      max-width: 347px;
+      padding: 16px 16px 21px 16px;
+    }
+
+    .home-hero__image-wrap {
+      background: #f5f5f5;
+      aspect-ratio: 1 / 1;
+    }
+
+    .home-hero__figure :global(img) {
+      width: 311px;
+      height: 311px;
+      object-fit: cover;
+    }
+
+    .home-hero__caption {
+      font-weight: 600;
+      color: #141416;
+    }
+
+    .home-hero__washi {
+      width: 112px;
+      height: 26px;
+      background: #cbd5e1;
+    }
+
+    .home-hero__washi--bottom {
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: -34px;
+      top: auto;
+      right: auto;
+      width: 82px;
+      height: 28px;
+      background: #cbd5e1;
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    /* Grid positioning for desktop */
+    .home-hero__kicker {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .home-hero__title {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .home-hero__copy {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .home-hero__cta {
+      grid-column: 1;
+      grid-row: 4;
+    }
+
+    .home-hero__badges-container {
+      grid-column: 1;
+      grid-row: 5;
+    }
+
+    .home-hero__figure {
+      grid-column: 2;
+      grid-row: 1 / span 5;
+      justify-self: center;
+    }
+  }
+</style>
+
+<section class="home-hero">
+  <div class="home-hero__grid">
+    <div class="home-hero__kicker">
+      <span class="home-hero__kicker-dot" aria-hidden="true"></span>
+      <span class="home-hero__kicker-text">Software + comunicación</span>
+    </div>
+
+    <h1 class="home-hero__title">Construyo webs que tu equipo puede mantener.</h1>
+
+    <div class="home-hero__copy">
+      <p>
+        Soy comunicador social y desarrollador freelance. Combino mi formación  para construir herramientas que la gente realmente usa.
+      </p>
+    </div>
+
+    <a class="home-hero__cta" href="/#proyectos">
+      <span class="home-hero__cta-accent" aria-hidden="true"></span>
+      <span>Ver proyectos</span>
+      <span class="home-hero__cta-arrow" aria-hidden="true">↓</span>
+    </a>
+
+    <div class="home-hero__badges-container">
+      <Badge titleBadge="Comunicación" variant="comunicacion" />
+      <Badge titleBadge="Django" variant="django" />
+      <Badge titleBadge="Python" variant="python" />
+      <Badge titleBadge="Astro" variant="astro" />
+      <Badge titleBadge="n8n" variant="n8n" />
+      <Badge titleBadge="React" variant="react" />
+    </div>
+
+    <figure class="home-hero__figure">
+      <span class="home-hero__washi" aria-hidden="true"></span>
+      <span class="home-hero__washi home-hero__washi--bottom" aria-hidden="true"></span>
+      <div class="home-hero__image-wrap">
+        <Image
+          src={personal}
+          alt="Fotografía de José Castro"
+          widths={[480, 680, 960, 1360, 1600]}
+          sizes="(max-width: 800px) calc(100vw - 32px), 680px"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <figcaption class="home-hero__caption">Código &amp; Contenidos</figcaption>
+    </figure>
+  </div>
+</section>

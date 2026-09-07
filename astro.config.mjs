@@ -33,5 +33,13 @@ export default defineConfig({
       styles: ["normal"],
       fallbacks: ["cursive"],
     },
+    {
+      name: "JetBrains Mono",
+      cssVariable: "--font-jetbrains",
+      provider: fontProviders.google(),
+      weights: ["400 700"],
+      styles: ["normal"],
+      fallbacks: ["monospace"],
+    },
   ],
 });
