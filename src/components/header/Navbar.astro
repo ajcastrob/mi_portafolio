@@ -1,0 +1,117 @@
+---
+import HeaderButton from "@/components/header/HeaderButton.astro"
+---
+
+<style>
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-24);
+    }
+
+    .header__menu {
+      display: flex;
+      gap: var(--space-24);
+      order: 0;
+    }
+
+    .header__nav-cta {
+      display: block;
+      order: 1;
+    }
+
+    .header__nav-cta .header__cta {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+    }
+
+    .header__menu-cta {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .header__nav {
+        display: none;
+      }
+      .header__nav-cta {
+        display: none;
+      }
+      .header__nav[data-menu-open] {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: calc(var(--z-header) + 1);
+        padding: 64px var(--space-24) var(--space-24);
+        background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: var(--border-width) solid var(--color-border);
+        animation: menu-slide-down var(--duration) var(--ease-out) forwards;
+      }
+      .header__menu {
+        flex-direction: column;
+        gap: 0;
+      }
+      .header__menu li {
+        border-bottom: var(--border-width) solid var(--color-border-soft);
+      }
+      .header__menu li:last-child {
+        border-bottom: none;
+      }
+      .header__link {
+        display: block;
+        padding: var(--space-16) 0;
+        font-size: var(--font-size-body);
+        color: var(--color-text-primary);
+        transition: color var(--duration) var(--ease-out);
+      }
+      .header__link:hover,
+      .header__link:focus-visible {
+        color: var(--color-accent);
+      }
+      .header__menu-cta {
+        display: block;
+        padding: var(--space-24) var(--space-16);
+      }
+      .header__menu-cta .header__cta {
+        width: 100%;
+      }
+      @keyframes menu-slide-down {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+
+
+<nav class="header__nav" id="site-nav" data-header-nav aria-label="Principal">
+  <ul class="header__menu">
+    <li>
+      <a class="header__link" href="/" >
+        inicio
+      </a>
+    </li>
+    <li>
+      <a class="header__link" href="/#proyectos" >
+        proyecto 
+      </a>
+    </li>
+    <li>
+      <a class="header__link" href="/#contacto" >
+        contacto
+      </a>
+    </li>
+  </ul>
+  <div class="header__menu-cta">
+    <HeaderButton />
+  </div>
+</nav>

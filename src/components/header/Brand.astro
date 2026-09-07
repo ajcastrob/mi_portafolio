@@ -1,0 +1,32 @@
+---
+const { linkLogo } = Astro.props
+---
+
+<style>
+  .header__brand{
+    display: flex;
+    width: 130px;
+    height: 40px;
+    background: var(--color-white);
+    flex-direction: column;
+    padding: 8.5px 12px 7.5px 12px;
+    align-items: flex-start;
+    border-radius: var(--radius);
+    border: var(--radius) solid var(--color-text-primary);
+    box-shadow: 2px 2px 0 0 var(--color-text-primary);
+  }
+
+  .header__logo {
+    width: 100px;
+    height: 100px;
+    }    
+</style>
+
+
+<a class="header__brand" href="/">
+  <svg class="header__logo" >
+    <use href={linkLogo}></use>
+  </svg>
+</a>
+
+

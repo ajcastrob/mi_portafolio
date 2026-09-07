@@ -1,0 +1,35 @@
+---
+---
+<style>
+.header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: var(--space-8) 18px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--color-white);
+  background: var(--color-accent);
+  border-radius: 20px;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.header__cta:hover,
+.header__cta:focus-visible {
+  background: var(--color-accent-soft);
+  color: var(--color-surface);
+}
+
+.header__cta:active {
+  transform: scale(0.98);
+}
+</style>
+
+<a class="header__cta" href="/#contacto">
+  Escríbeme 
+</a>

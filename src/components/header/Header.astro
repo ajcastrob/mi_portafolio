@@ -1,0 +1,183 @@
+---
+import Brand from "@/components/header/Brand.astro"
+import Navbar from "@/components/header/Navbar.astro"
+import HeaderButton from "@/components/header/HeaderButton.astro"
+
+const linkLogo = "/assets/icons/logo.svg#logo"
+const hamburgerIcon = "/assets/icons/menu.svg#menu" 
+const closeIcon = "/assets/icons/menu.svg#close"
+---
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    width: 100%;
+    max-width: 100%;
+    padding: var(--space-16) var(--space-64) 0;
+    background: transparent;
+  }
+  .header__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    max-width: var(--max-width-content);
+    min-height: 64px;
+    margin-inline: auto;
+    padding: 0 var(--space-8) 0 var(--space-16);
+    background:transparent; 
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .header__end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-8);
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  /* Hamburger toggle — hidden on desktop */
+  .header__toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: var(--space-12) var(--space-16) 0;
+    }
+    .header__container {
+      grid-template-columns: 1fr auto;
+      padding: 0 var(--space-8);
+    }
+    .btn {
+      display: none;
+    }
+    .header__toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      color: var(--color-text-primary);
+      flex-shrink: 0;
+      transition: background-color var(--duration) var(--ease-out);
+    }
+    .header__toggle:hover {
+      background: var(--color-surface-warm);
+    }
+    .header__toggle svg {
+      width: 24px;
+      height: 24px;
+    }
+    .header__toggle-icon--close {
+      display: none;
+    }
+    .header__toggle.is-open .header__toggle-icon--open {
+      display: none;
+    }
+    .header__toggle.is-open .header__toggle-icon--close {
+      display: block;
+    }
+    .header {
+      z-index: calc(var(--z-header) + 2);
+    }
+    .header__end {
+      position: relative;
+      z-index: calc(var(--z-header) + 2);
+    }
+  }
+</style>
+
+<header class="header">
+  <div class="header__container">
+    <Brand linkLogo={linkLogo} />      
+    <Navbar />
+    <div class="header__end">
+      <button
+        class="header__toggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        data-menu-toggle 
+      >
+        <svg class="header__toggle-icon--open" aria-hidden="true" focusable="false">
+          <use href={hamburgerIcon}></use>
+        </svg>
+        <svg class="header__toggle-icon--close" aria-hidden="true" focusable="false" viewBox="0 0 50 50" width="24" height="24">
+          <use href={closeIcon}></use>
+        </svg>
+      </button>
+      <div class="btn">
+        <HeaderButton />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const nav = document.querySelector('#site-nav');
+  const BREAKPOINT = 768;
+
+  function openMenu() {
+    nav?.setAttribute('data-menu-open', '');
+    toggle?.setAttribute('aria-expanded', 'true');
+    toggle?.setAttribute('aria-label', 'Cerrar menú');
+    toggle?.classList.add('is-open');
+    // Focus first link
+    const firstLink = nav?.querySelector('a');
+    firstLink?.focus();
+  }
+
+  function closeMenu() {
+    nav?.removeAttribute('data-menu-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Abrir menú');
+    toggle?.classList.remove('is-open');
+  }
+
+  function toggleMenu() {
+    if (nav?.hasAttribute('data-menu-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  // Hamburger click
+  toggle?.addEventListener('click', toggleMenu);
+
+  // Escape key closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav?.hasAttribute('data-menu-open')) {
+      closeMenu();
+      toggle?.focus();
+    }
+  });
+
+  // Close when clicking a nav link
+  nav?.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target instanceof HTMLElement && target.closest('a')) {
+      closeMenu();
+    }
+  });
+
+  // Close on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > BREAKPOINT && nav?.hasAttribute('data-menu-open')) {
+      closeMenu();
+    }
+  });
+</script>

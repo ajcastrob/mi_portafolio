@@ -1,21 +1,8 @@
 ---
-import { Font } from "astro:assets";
-import "@/styles/global.css";
+import BasicLayout from "@/layouts/BasicLayout.astro"
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<Font cssVariable="--font-sans" preload />
-		<Font cssVariable="--font-mono" />
-		<Font cssVariable="--font-hand" />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BasicLayout>
+    <h1>Portafolio</h1>
+</BasicLayout>
+
