@@ -1,0 +1,23 @@
+[
+  {
+    "index": "01",
+    "stack": "Django",
+    "title": "TaskApp",
+    "description": "Gestión de tareas en Render. Django + UX clara y flujos diarios de equipo.",
+    "href": "https://github.com/ajcastrob/proyecto_trello"
+  },
+  {
+    "index": "02",
+    "stack": "Wagtail",
+    "title": "backend-cms",
+    "description": "CMS Wagtail/Astro. Contenido y API listos para consumo instantáneo.",
+    "href": "https://github.com/ajcastrob/backend-cms"
+  },
+  {
+    "index": "03",
+    "stack": "n8n",
+    "title": "Lead → aviso",
+    "description": "Flujo n8n-ready: captura de leads y notificación de mensajería al instante.",
+    "href": "https://github.com/ajcastrob/job-search-automation"
+  }
+]

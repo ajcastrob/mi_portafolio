@@ -1,0 +1,23 @@
+[
+  {
+    "label": "GitHub",
+    "handle": "ajcastrob",
+    "href": "https://github.com/ajcastrob",
+    "accent": "github",
+    "external": true
+  },
+  {
+    "label": "LinkedIn",
+    "handle": "José Castro",
+    "href": "https://www.linkedin.com/in/josé-castro-b600791a4/",
+    "accent": "linkedin",
+    "external": true
+  },
+  {
+    "label": "Email",
+    "handle": "escríbeme",
+    "href": "mailto:a.j.castro.b@gmail.com",
+    "accent": "email",
+    "external": false
+  }
+]

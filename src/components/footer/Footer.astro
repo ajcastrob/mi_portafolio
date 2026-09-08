@@ -1,0 +1,490 @@
+---
+import contacts from "@/lib/contacts.json"
+
+const year = new Date().getFullYear()
+const astroIcon = "/assets/icons/logo.svg#astro"
+---
+
+<style>
+  .footer {
+    --footer-ink: #1e1e24;
+    --footer-muted: #8e8e99;
+    --footer-note: #585860;
+    --footer-chip-github: #3b82f6;
+    --footer-chip-linkedin: #f43f5e;
+    --footer-chip-email: #fbbf24;
+    width: 100%;
+    max-width: 100%;
+    scroll-margin-top: 80px;
+    background: var(--color-surface);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-inline: auto;
+    padding: 38px var(--space-24) var(--space-24);
+    border-top: 2px solid color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+  }
+
+  .footer__rule {
+    display: none;
+  }
+
+  .footer__identity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-12);
+    width: 100%;
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .footer__name {
+    margin: 0 0 -4px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    color: var(--color-text-primary);
+  }
+
+  .footer__tagline {
+    margin: 0;
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-accent);
+  }
+
+  .footer__status {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 5px 11px;
+    background: #f5f5f4;
+    border: var(--border-width) solid #a8a29e;
+    border-radius: var(--radius);
+    box-shadow: none;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+    color: #292524;
+    transform: rotate(-2deg);
+  }
+
+  .footer__status-dot {
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    border-radius: var(--radius-pill);
+    background: #10b981;
+    flex-shrink: 0;
+  }
+
+  .footer__contacts {
+    width: 100%;
+  }
+
+  .footer__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 var(--space-8);
+  }
+
+  .footer__chip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 11px;
+    background: var(--color-white);
+    border: var(--border-width) solid color-mix(in srgb, var(--color-text-primary) 80%, transparent);
+    border-radius: var(--radius-md);
+    box-shadow: 2px 2px 0 0 var(--color-text-primary);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--duration) var(--ease-out),
+      box-shadow var(--duration) var(--ease-out);
+  }
+
+  .footer__chip:hover,
+  .footer__chip:focus-visible {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 var(--color-text-primary);
+  }
+
+  .footer__chip:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 var(--color-text-primary);
+  }
+
+  .footer__chip-head {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .footer__chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    flex-shrink: 0;
+  }
+
+  .footer__chip--github .footer__chip-dot {
+    background: var(--footer-chip-github);
+  }
+
+  .footer__chip--linkedin .footer__chip-dot {
+    background: var(--footer-chip-linkedin);
+  }
+
+  .footer__chip--email .footer__chip-dot {
+    background: #f59e0b;
+  }
+
+  .footer__chip-label {
+    margin: 0 0 0 6px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 16.5px;
+    color: var(--color-text-primary);
+  }
+
+  .footer__chip-handle {
+    margin: 2px 0 0;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: var(--color-text-secondary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .footer__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    padding-top: 17px;
+    border-top: var(--border-width) solid color-mix(in srgb, var(--color-border-soft) 80%, transparent);
+    text-align: center;
+  }
+
+  .footer__note {
+    margin: 0;
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-text-secondary);
+  }
+
+  .footer__note-desktop {
+    display: none;
+  }
+
+  .footer__heart {
+    color: var(--color-accent);
+  }
+
+  .footer__copy {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #a8a29e;
+  }
+
+  .footer__copy-desktop {
+    display: none;
+  }
+
+  @media (max-width: 360px) {
+    .footer__inner {
+      padding-inline: var(--space-16);
+    }
+
+    .footer__identity {
+      flex-wrap: wrap;
+      row-gap: var(--space-12);
+    }
+
+    .footer__chip {
+      padding: 10px 8px;
+    }
+
+    .footer__chip-handle {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    .footer__copy {
+      max-width: 28ch;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .footer__inner {
+      gap: var(--space-32);
+      padding: 56px var(--space-48) 48px;
+      border-top: none;
+    }
+
+    .footer__rule {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--footer-ink);
+    }
+
+    .footer__identity {
+      align-items: center;
+    }
+
+    .footer__brand {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-12);
+    }
+
+    .footer__name {
+      margin: 0;
+      font-family: var(--font-jetbrains);
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: -0.45px;
+    }
+
+    .footer__tagline {
+      font-size: 20px;
+      line-height: 28px;
+      color: #dc2626;
+    }
+
+    .footer__tagline::before {
+      content: "• ";
+    }
+
+    .footer__status {
+      padding: 5px 15px;
+      background: #ecfdf5;
+      border-color: var(--footer-ink);
+      border-radius: 6px;
+      box-shadow: 0 1px 1px rgba(44, 30, 20, 0.05);
+      font-family: var(--font-jetbrains);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #064e3b;
+      transform: none;
+    }
+
+    .footer__status-dot {
+      display: none;
+    }
+
+    .footer__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+      padding-bottom: var(--space-8);
+    }
+
+    .footer__chip {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      width: auto;
+      padding: 9px 15px;
+      border-color: var(--footer-ink);
+      box-shadow: 0 1px 1px rgba(44, 30, 20, 0.05);
+    }
+
+    .footer__chip:hover,
+    .footer__chip:focus-visible {
+      transform: translate(-1px, -1px);
+      box-shadow: 2px 2px 0 0 var(--footer-ink);
+    }
+
+    .footer__chip:active {
+      transform: scale(0.98);
+      box-shadow: 0 1px 1px rgba(44, 30, 20, 0.05);
+    }
+
+    .footer__chip-head {
+      display: contents;
+    }
+
+    .footer__chip-dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    .footer__chip--email .footer__chip-dot {
+      background: var(--footer-chip-email);
+    }
+
+    .footer__chip-label {
+      margin: 0;
+      font-family: var(--font-jetbrains);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .footer__chip-handle {
+      margin: 0;
+      font-family: var(--font-jetbrains);
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--footer-muted);
+    }
+
+    .footer__meta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-16);
+      text-align: left;
+      border-top-color: #e5e5e5;
+    }
+
+    .footer__note {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--footer-note);
+    }
+
+    .footer__note-mobile {
+      display: none;
+    }
+
+    .footer__note-desktop {
+      display: flex;
+      gap: 5px;
+    }
+
+    .footer__copy {
+      flex-shrink: 0;
+      font-family: var(--font-jetbrains);
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--footer-muted);
+    }
+
+    .footer__copy-mobile {
+      display: none;
+    }
+
+    .footer__copy-desktop {
+      display: inline;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer__chip,
+    .footer__chip:hover,
+    .footer__chip:focus-visible,
+    .footer__chip:active {
+      transform: none;
+      transition: none;
+    }
+
+    .footer__status {
+      transform: none;
+    }
+  }
+</style>
+
+<footer class="footer" id="contacto">
+  <div class="footer__inner">
+    <div class="footer__rule" aria-hidden="true"></div>
+
+    <div class="footer__identity">
+      <div class="footer__brand">
+        <p class="footer__name">ajcastrob</p>
+        <p class="footer__tagline">Web + comunicación</p>
+      </div>
+      <p class="footer__status">
+        <span class="footer__status-dot" aria-hidden="true"></span>
+        Disponible LATAM
+      </p>
+    </div>
+
+    <nav class="footer__contacts" aria-label="Contacto">
+      <ul class="footer__list">
+        {
+          contacts.map((contact) => (
+            <li>
+              <a
+                class:list={["footer__chip", `footer__chip--${contact.accent}`]}
+                href={contact.href}
+                aria-label={
+                  contact.external
+                    ? `${contact.label} ${contact.handle}, se abre en una pestaña nueva`
+                    : `${contact.label}: ${contact.handle}`
+                }
+                {...(contact.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                <span class="footer__chip-head">
+                  <span class="footer__chip-dot" aria-hidden="true"></span>
+                  <span class="footer__chip-label">{contact.label}</span>
+                </span>
+                <span class="footer__chip-handle">{contact.handle}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__meta">
+      <p class="footer__note">
+        <span class="footer__note-desktop">Hecho con 
+          <svg class="header__toggle-icon--close" aria-hidden="true" focusable="false" viewBox="0 0 50 50" width="24" height="24">
+            <use href={astroIcon}></use>
+          </svg>
+        </span>
+        <span class="footer__note-mobile">
+          Hecho con <span class="footer__heart" aria-hidden="true">♥</span>
+        </span>
+      </p>
+      <p class="footer__copy">
+        <span class="footer__copy-desktop">© {year} ajcastrob</span>
+        <span class="footer__copy-mobile">© {year} ajcastrob. Todos los derechos reservados.</span>
+      </p>
+    </div>
+  </div>
+</footer>
