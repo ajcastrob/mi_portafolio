@@ -1,0 +1,179 @@
+---
+import ProyectoCard from "@/components/proyectos/ProyectoCard.astro"
+
+const projects = [
+  {
+    index: "01",
+    stack: "Django",
+    title: "TaskApp",
+    description: "Gestión de tareas en Render. Django + UX clara y flujos diarios de equipo.",
+    href: "https://github.com/ajcastrob/proyecto_trello",
+  },
+  {
+    index: "02",
+    stack: "Wagtail",
+    title: "backend-cms",
+    description: "CMS Wagtail/Astro. Contenido y API listos para consumo instantáneo.",
+    href: "https://github.com/ajcastrob/backend-cms",
+  },
+  {
+    index: "03",
+    stack: "n8n",
+    title: "Lead → aviso",
+    description: "Flujo n8n-ready: captura de leads y notificación de mensajería al instante.",
+    href: "https://github.com/ajcastrob/job-search-automation",
+  },
+]
+---
+
+<style>
+  .proyectos {
+    width: 100%;
+    max-width: 100%;
+    scroll-margin-top: 80px;
+    background: color-mix(in srgb, var(--color-surface-muted) 60%, transparent);
+    border-top: var(--border-width) solid color-mix(in srgb, var(--color-border-soft) 70%, transparent);
+  }
+
+  .proyectos__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-inline: auto;
+    padding: var(--space-32) var(--space-24) var(--space-48);
+  }
+
+  .proyectos__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .proyectos__title {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--font-size-nav);
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .proyectos__lede {
+    margin: 0;
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-accent);
+  }
+
+  .proyectos__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-16);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .proyectos__item {
+    min-width: 0;
+  }
+
+  .proyectos__empty {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+  }
+
+  @media (min-width: 769px) {
+    .proyectos {
+      background: color-mix(in srgb, #f4eee4 70%, transparent);
+      border-block: var(--border-width) solid color-mix(in srgb, #d4d4d4 80%, transparent);
+      padding-inline: var(--space-40);
+    }
+
+    .proyectos__inner {
+      gap: var(--space-32);
+      padding: 64px 0 65px;
+    }
+
+    .proyectos__header {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-12);
+    }
+
+    .proyectos__title {
+      font-family: var(--font-jetbrains);
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 1.4px;
+      flex-shrink: 0;
+    }
+
+    .proyectos__lede {
+      font-size: 24px;
+      line-height: 32px;
+      color: #dc2626;
+    }
+
+    .proyectos__grid {
+      gap: var(--space-24);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .proyectos__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .proyectos__item {
+      animation: proyectos-reveal 0.55s var(--ease-out) both;
+      animation-delay: calc(var(--i, 0) * 70ms);
+    }
+  }
+
+  @keyframes proyectos-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<section class="proyectos" id="proyectos" aria-labelledby="proyectos-heading">
+  <div class="proyectos__inner">
+    <header class="proyectos__header">
+      <h2 id="proyectos-heading" class="proyectos__title">Proyectos</h2>
+      <p class="proyectos__lede">Tres piezas recientes - web y flujos.</p>
+    </header>
+
+    {
+      projects.length === 0 ? (
+        <p class="proyectos__empty">Todavía no hay proyectos publicados.</p>
+      ) : (
+        <ul class="proyectos__grid">
+          {projects.map((project, i) => (
+            <li class="proyectos__item" style={`--i: ${i}`}>
+              <ProyectoCard {...project} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
