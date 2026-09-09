@@ -6,13 +6,15 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  min-height: 40px;
   padding: var(--space-8) 18px;
+  font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 16px;
   color: var(--color-white);
   background: var(--color-accent);
-  border-radius: 20px;
+  border-radius: var(--radius-pill);
   white-space: nowrap;
   transition:
     background-color var(--duration) var(--ease-out),
@@ -27,6 +29,22 @@
 
 .header__cta:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .header__cta {
+    min-height: 40px;
+    padding: var(--space-8) 12px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__cta,
+  .header__cta:active {
+    transition: none;
+    transform: none;
+  }
 }
 </style>
 

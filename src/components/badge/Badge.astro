@@ -13,85 +13,24 @@ const { titleBadge, variant } = Astro.props
   }
 
   /* Variantes - Mobile */
-  .home-hero__badge--comunicacion {
-    background-color: #f5efea;
-    font-weight: 600;
-    color: #292524;
-  }
-
-  .home-hero__badge--django {
-    background-color: #f5efea;
-    font-weight: 500;
-    color: #44403c;
-  }
-
-  .home-hero__badge--python {
-    background-color: #fdf0d5;
-    font-weight: 600;
-    color: #8b5e00;
-  }
-
-  .home-hero__badge--astro {
-    background-color: #eaf0f6;
-    font-weight: 500;
-    color: #44403c;
-  }
-
-  .home-hero__badge--n8n {
-    background-color: #f7e7f0;
-    font-weight: 500;
-    color: #292524;
-  }
-
+  .home-hero__badge--comunicacion,
+  .home-hero__badge--django,
+  .home-hero__badge--python,
+  .home-hero__badge--astro,
+  .home-hero__badge--n8n,
   .home-hero__badge--react {
-    background-color: var(--color-white);
-    font-weight: 500;
-    color: #44403c;
+    background-color: var(--color-surface-warm);
+    font-weight: 600;
+    color: var(--color-text-primary);
   }
 
-  /* Desktop */
   @media (min-width: 769px) {
     .home-hero__badge {
-      font-family: var(--font-jetbrains);
+      font-family: var(--font-mono);
       font-size: 12px;
       padding: 4px 14px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-
-    .home-hero__badge--comunicacion {
-      background-color: #ffffff;
-      color: #141416;
-      font-weight: 600;
-    }
-
-    .home-hero__badge--django {
-      background-color: #fffbeb;
-      color: #78350f;
-      font-weight: 500;
-    }
-
-    .home-hero__badge--python {
-      background-color: #ecfdf5;
-      color: #065f46;
-      font-weight: 500;
-    }
-
-    .home-hero__badge--astro {
-      background-color: #ffffff;
-      color: #141416;
-      font-weight: 500;
-    }
-
-    .home-hero__badge--n8n {
-      background-color: #eff6ff;
-      color: #1e3a8a;
-      font-weight: 500;
-    }
-
-    .home-hero__badge--react {
-      background-color: #ffffff;
-      color: #141416;
-      font-weight: 500;
+      background-color: var(--color-white);
+      border: var(--border-width) solid var(--color-border);
     }
   }
 </style>

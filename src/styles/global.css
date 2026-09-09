@@ -11,6 +11,11 @@
   --color-surface-warm: #f4efeb;
   --color-accent: #e11d48;
   --color-accent-soft: #ed456a;
+  --color-ink-hard: #1e1e24;
+  --color-placeholder: #57534e;
+  --color-washi: #cbd5e1;
+  --shadow-sello: 2px 2px 0 0 var(--color-text-primary);
+  --shadow-sello-hover: 4px 4px 0 0 var(--color-text-primary);
 
   /* spaces */
   --space-4: 4px;
@@ -100,4 +105,35 @@ a {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: var(--z-skip);
+  padding: var(--space-8) var(--space-16);
+  background: var(--color-text-primary);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-nav);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

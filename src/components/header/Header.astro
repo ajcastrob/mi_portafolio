@@ -45,17 +45,17 @@ const closeIcon = "/assets/icons/menu.svg#close"
   .header__toggle {
     display: none;
   }
-
-  @media (max-width: 768px) {
+  
+    @media (max-width: 768px) {
     .header {
       padding: var(--space-12) var(--space-16) 0;
     }
+    .btn {
+    display: none;
+     }
     .header__container {
       grid-template-columns: 1fr auto;
       padding: 0 var(--space-8);
-    }
-    .btn {
-      display: none;
     }
     .header__toggle {
       display: inline-flex;

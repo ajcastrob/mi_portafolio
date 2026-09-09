@@ -78,15 +78,16 @@ import Badge from "@/components/badge/Badge.astro"
     font-family: var(--font-mono);
     font-weight: 500;
     font-size: 12px;
+    min-height: 44px;
     padding: 10px 20px;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     text-decoration: none;
     width: fit-content;
     transition: opacity var(--duration-fast) var(--ease-out);
 
     &:hover {
       opacity: 0.85;
-      color: #fff;
+      color: var(--color-white);
     }
     &:after{
       position: absolute;
@@ -111,7 +112,7 @@ import Badge from "@/components/badge/Badge.astro"
     width: 8px;
     height: 8px;
     border-radius: 9999px;
-    background-color: #22d3ee;
+    background-color: var(--color-accent);
     flex-shrink: 0;
     animation: pulse 2s infinite;
   }
@@ -152,7 +153,7 @@ import Badge from "@/components/badge/Badge.astro"
   }
 
   .home-hero__image-wrap {
-    background: #f5f5f4;
+    background: var(--color-surface-muted);
     border-radius: 0;
     overflow: hidden;
     aspect-ratio: 211 / 230;
@@ -169,7 +170,7 @@ import Badge from "@/components/badge/Badge.astro"
     font-family: var(--font-hand);
     font-weight: 700;
     font-size: 24px;
-    color: #44403c;
+    color: var(--color-text-secondary);
     text-align: center;
     margin-top: 12px;
     line-height: 1.2;
@@ -181,7 +182,7 @@ import Badge from "@/components/badge/Badge.astro"
     right: -30px;
     width: 113px;
     height: 28px;
-    background: rgba(224, 231, 240, 0.75);
+    background: color-mix(in srgb, var(--color-washi) 75%, transparent);
     border-radius: 2px;
     transform: rotate(20deg);
     pointer-events: none;
@@ -205,6 +206,18 @@ import Badge from "@/components/badge/Badge.astro"
   }
 
   /* Desktop Layout (≥769px) */
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero__cta-accent {
+      animation: none;
+    }
+
+    .home-hero__cta:after,
+    .home-hero__cta:hover:after {
+      transition: none;
+      width: 0;
+    }
+  }
+
   @media (min-width: 769px) {
     .home-hero {
       padding: 48px var(--space-40) var(--space-64);
@@ -212,7 +225,7 @@ import Badge from "@/components/badge/Badge.astro"
 
     .home-hero__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 48px;
       align-items: start;
     }
@@ -220,11 +233,11 @@ import Badge from "@/components/badge/Badge.astro"
     /* Kicker - Desktop */
     .home-hero__kicker-text {
       font-size: 30px;
-      color: #dc2626;
+      color: var(--color-accent);
     }
 
     .home-hero__kicker-dot {
-      background-color: #dc2626;
+      background-color: var(--color-accent);
     }
 
     /* Heading - Desktop */
@@ -237,7 +250,7 @@ import Badge from "@/components/badge/Badge.astro"
     .home-hero__copy {
       font-size: 18px;
       line-height: 28px;
-      color: #585860;
+      color: var(--color-text-secondary);
     }
 
     /* CTA Button - Desktop */
@@ -261,31 +274,32 @@ import Badge from "@/components/badge/Badge.astro"
 
     /* Polaroid - Desktop */
     .home-hero__figure {
-      width: 347px;
+      width: 100%;
       max-width: 347px;
       padding: 16px 16px 21px 16px;
     }
 
     .home-hero__image-wrap {
-      background: #f5f5f5;
+      background: var(--color-surface-muted);
       aspect-ratio: 1 / 1;
     }
 
     .home-hero__figure :global(img) {
-      width: 311px;
-      height: 311px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
     .home-hero__caption {
       font-weight: 600;
-      color: #141416;
+      color: var(--color-text-primary);
     }
 
     .home-hero__washi {
       width: 112px;
       height: 26px;
-      background: #cbd5e1;
+      right: -12px;
+      background: var(--color-washi);
     }
 
     .home-hero__washi--bottom {
@@ -297,7 +311,7 @@ import Badge from "@/components/badge/Badge.astro"
       right: auto;
       width: 82px;
       height: 28px;
-      background: #cbd5e1;
+      background: var(--color-washi);
       border-radius: 2px;
       transform: rotate(45deg);
     }

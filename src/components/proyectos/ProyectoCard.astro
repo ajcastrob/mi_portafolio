@@ -28,7 +28,7 @@ const label = isExternal
     background: var(--color-white);
     border: var(--border-width) solid color-mix(in srgb, var(--color-border) 90%, transparent);
     border-radius: var(--radius-lg);
-    box-shadow: 2px 2px 0 0 var(--color-text-primary);
+    box-shadow: var(--shadow-sello);
     transition:
       transform var(--duration) var(--ease-out),
       box-shadow var(--duration) var(--ease-out);
@@ -102,7 +102,7 @@ const label = isExternal
   .proyecto-card__footer {
     margin-top: var(--space-16);
     padding-top: 13px;
-    border-top: var(--border-width) solid #f5f5f4;
+    border-top: var(--border-width) solid var(--color-surface-muted);
   }
 
   .proyecto-card__link {
@@ -142,7 +142,7 @@ const label = isExternal
   @media (min-width: 769px) {
     .proyecto-card {
       padding: 26px;
-      border: 2px solid #1e1e24;
+      border: 2px solid var(--color-ink-hard);
       border-radius: var(--radius-md);
       box-shadow: 3px 3px 0 0 var(--color-text-primary);
     }
@@ -161,16 +161,14 @@ const label = isExternal
       min-width: unset;
       height: auto;
       padding: 2px 8px;
-      background: #dc2626;
-      font-family: var(--font-jetbrains);
-      border-radius: 4px;
+      background: var(--color-accent);
+      border-radius: var(--radius);
     }
 
     .proyecto-card__stack {
       padding: 3px 9px;
-      background: #fafafa;
-      border-color: #1e1e24;
-      font-family: var(--font-jetbrains);
+      background: var(--color-surface-muted);
+      border-color: var(--color-ink-hard);
       font-size: 12px;
       line-height: 16px;
       color: var(--color-text-primary);
@@ -190,25 +188,25 @@ const label = isExternal
       margin-top: 0;
       font-size: 14px;
       line-height: 22.75px;
-      color: #585860;
+      color: var(--color-text-secondary);
     }
 
     .proyecto-card__footer {
       margin-top: var(--space-24);
       padding-top: 25px;
-      border-top-color: #f5f5f5;
+      border-top-color: var(--color-surface-muted);
     }
 
     .proyecto-card__link {
       font-family: var(--font-hand);
       font-size: 18px;
       line-height: 28px;
-      color: #dc2626;
+      color: var(--color-accent);
     }
 
     .proyecto-card__link:hover,
     .proyecto-card__link:focus-visible {
-      color: #dc2626;
+      color: var(--color-accent);
     }
   }
 

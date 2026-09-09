@@ -30,13 +30,12 @@
     margin: 0;
     flex-shrink: 0;
     width: fit-content;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-weight: 700;
-    font-size: var(--font-size-nav);
-    line-height: 16px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
+    font-size: var(--font-size-h2);
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
   }
 
   .about-text__rule {
@@ -54,7 +53,7 @@
     font-weight: 400;
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
-    color: #44403c;
+    color: var(--color-text-secondary);
   }
 
   @media (min-width: 769px) {
@@ -65,17 +64,13 @@
     }
 
     .about-text__inner {
-      gap: 14px;
-      padding: 40px 0 var(--space-64);
-      border-top: var(--border-width) solid color-mix(in srgb, #d4d4d4 80%, transparent);
+      gap: var(--space-16);
+      padding: var(--space-40) 0 var(--space-64);
+      border-top: var(--border-width) solid color-mix(in srgb, var(--color-border) 80%, transparent);
     }
 
     .about-text__title {
-      font-family: var(--font-jetbrains);
-      color: var(--color-text-primary);
-      background: color-mix(in srgb, #e5e5e5 80%, transparent);
-      padding: var(--space-4) var(--space-8);
-      border-radius: 4px;
+      font-size: 20px;
     }
 
     .about-text__rule {
@@ -83,10 +78,9 @@
     }
 
     .about-text__copy {
-      max-width: 768px;
+      max-width: 65ch;
       font-size: var(--font-size-lede);
       line-height: 28px;
-      color: #585860;
     }
   }
 </style>

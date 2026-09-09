@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import "./ContactForm.css";
 import { useContactForm } from "./useContactForm.js";
 
@@ -7,8 +8,23 @@ function fieldClass(errors, name) {
     : "contact-form__field";
 }
 
+function looksLikePhone(value) {
+  return /^\+?\d/.test(value.replace(/[\s().-]/g, ""));
+}
+
 export default function ContactForm() {
   const [state, formAction, pending] = useContactForm();
+  const formRef = useRef(null);
+  const [contactValue, setContactValue] = useState("");
+  const phonePath = looksLikePhone(contactValue);
+  const sent = Boolean(state.ok);
+  const busy = pending || sent;
+
+  useEffect(() => {
+    if (!state.ok) return;
+    formRef.current?.reset();
+    setContactValue("");
+  }, [state.ok]);
 
   return (
     <section
@@ -18,7 +34,6 @@ export default function ContactForm() {
     >
       <div className="contact-form__inner">
         <header className="contact-form__header">
-          <p className="contact-form__kicker">Hablemos</p>
           <h2 id="contact-form-heading" className="contact-form__hook">
             ¿Tienes algo en mente? Escríbeme.
           </h2>
@@ -28,6 +43,7 @@ export default function ContactForm() {
         </header>
         <form
           className="contact-form__form"
+          ref={formRef}
           action={formAction}
           acceptCharset="UTF-8"
           noValidate
@@ -63,13 +79,17 @@ export default function ContactForm() {
                 maxLength={120}
                 required
                 placeholder="Tu nombre o empresa"
+                disabled={sent}
                 aria-invalid={Boolean(state.fieldErrors.name)}
-                aria-describedby="contact-name-error"
+                aria-describedby={
+                  state.fieldErrors.name ? "contact-name-error" : undefined
+                }
               />
               <p
                 className="contact-form__error"
                 id="contact-name-error"
                 data-error-for="name"
+                role={state.fieldErrors.name ? "alert" : undefined}
               >
                 {state.fieldErrors.name}
               </p>
@@ -84,21 +104,27 @@ export default function ContactForm() {
                 id="contact-email"
                 name="contact"
                 type="text"
-                autoComplete="email"
-                inputMode="email"
+                autoComplete={phonePath ? "tel" : "email"}
+                inputMode={phonePath ? "tel" : "text"}
                 minLength={5}
                 maxLength={160}
                 required
                 pattern="^([^@\s]+@[^@\s]+\.[^@\s]{2,}|\+?[0-9][0-9\s().-]{6,24})$"
                 title="Escribe un email o un número de WhatsApp."
-                placeholder="tu@correo.com o +51..."
+                placeholder="tu@correo.com o teléfono"
+                value={contactValue}
+                onChange={(event) => setContactValue(event.target.value)}
+                disabled={sent}
                 aria-invalid={Boolean(state.fieldErrors.contact)}
-                aria-describedby="contact-email-error"
+                aria-describedby={
+                  state.fieldErrors.contact ? "contact-email-error" : undefined
+                }
               />
               <p
                 className="contact-form__error"
                 id="contact-email-error"
                 data-error-for="contact"
+                role={state.fieldErrors.contact ? "alert" : undefined}
               >
                 {state.fieldErrors.contact}
               </p>
@@ -118,13 +144,17 @@ export default function ContactForm() {
               rows={3}
               required
               placeholder="Describe brevemente lo que necesitas..."
+              disabled={sent}
               aria-invalid={Boolean(state.fieldErrors.message)}
-              aria-describedby="contact-message-error"
+              aria-describedby={
+                state.fieldErrors.message ? "contact-message-error" : undefined
+              }
             />
             <p
               className="contact-form__error"
               id="contact-message-error"
               data-error-for="message"
+              role={state.fieldErrors.message ? "alert" : undefined}
             >
               {state.fieldErrors.message}
             </p>
@@ -141,16 +171,18 @@ export default function ContactForm() {
                 {state.error}
               </p>
             ) : null}
-            <button
-              className="contact-form__submit"
-              type="submit"
-              disabled={pending}
-            >
-              <span>{pending ? "Enviando…" : "Enviar mensaje"}</span>
-              <span className="contact-form__arrow" aria-hidden="true">
-                →
-              </span>
-            </button>
+            {sent ? null : (
+              <button
+                className="contact-form__submit"
+                type="submit"
+                disabled={busy}
+              >
+                <span>{pending ? "Enviando…" : "Enviar mensaje"}</span>
+                <span className="contact-form__arrow" aria-hidden="true">
+                  →
+                </span>
+              </button>
+            )}
           </div>
         </form>
       </div>

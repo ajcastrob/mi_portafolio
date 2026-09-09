@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-09T00:00:00.000Z",
+  "title": "Design System: ajcastrob",
+  "extensions": {
+    "colorMeta": {
+      "lacre": {
+        "role": "primary",
+        "displayName": "Rosa de lacre",
+        "canonical": "#e11d48",
+        "tonalRamp": ["#4c0519", "#881337", "#9f1239", "#be123c", "#e11d48", "#f43f5e", "#fb7185", "#ffe4e6"]
+      },
+      "lacre-soft": {
+        "role": "primary",
+        "displayName": "Lacre suave",
+        "canonical": "#ed456a",
+        "tonalRamp": ["#4c0519", "#9f1239", "#e11d48", "#ed456a", "#f43f5e", "#fb7185", "#fecdd3", "#fff1f2"]
+      },
+      "papel-recado": {
+        "role": "neutral",
+        "displayName": "Papel de recado",
+        "canonical": "#faf7f2",
+        "tonalRamp": ["#1c1917", "#44403c", "#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f4efeb", "#faf7f2"]
+      },
+      "mesa": {
+        "role": "neutral",
+        "displayName": "Mesa",
+        "canonical": "#f4efeb",
+        "tonalRamp": ["#1c1917", "#44403c", "#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f4efeb", "#fafaf9"]
+      },
+      "papel-muted": {
+        "role": "neutral",
+        "displayName": "Papel muted",
+        "canonical": "#fafaf9",
+        "tonalRamp": ["#1c1917", "#292524", "#57534e", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f5f5f4", "#fafaf9"]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#141416",
+        "tonalRamp": ["#0a0a0b", "#141416", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#e7e5e4"]
+      },
+      "tinta-piedra": {
+        "role": "neutral",
+        "displayName": "Tinta de piedra",
+        "canonical": "#57534e",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "tinta-margen": {
+        "role": "neutral",
+        "displayName": "Tinta de margen",
+        "canonical": "#78716c",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "recorte": {
+        "role": "neutral",
+        "displayName": "Recorte",
+        "canonical": "#d6d3d1",
+        "tonalRamp": ["#44403c", "#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f5f5f4", "#fafaf9", "#ffffff"]
+      },
+      "recorte-suave": {
+        "role": "neutral",
+        "displayName": "Recorte suave",
+        "canonical": "#e7e5e4",
+        "tonalRamp": ["#44403c", "#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f5f5f4", "#fafaf9", "#ffffff"]
+      },
+      "blanco": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f5f5f4", "#faf7f2", "#fafaf9", "#ffffff"]
+      },
+      "tinta-sello": {
+        "role": "neutral",
+        "displayName": "Tinta de sello",
+        "canonical": "#1e1e24",
+        "tonalRamp": ["#0a0a0b", "#141416", "#1e1e24", "#292524", "#44403c", "#57534e", "#a8a29e", "#e7e5e4"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero h1 on desktop. 48px, weight 800. Ceiling; never larger."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Hero h1 on small screens. Same voice at 32px."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names and compact headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy. Max 65ch. Tinta or tinta de piedra."
+      },
+      "label": {
+        "displayName": "Label / stamp",
+        "purpose": "Form labels, section stamps, chips. Space Mono; JetBrains Mono from 769px."
+      },
+      "hand": {
+        "displayName": "Hand",
+        "purpose": "Caveat recados: kicker, caption, contact hook. Short lines only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sello",
+        "value": "2px 2px 0 0 #141416",
+        "purpose": "Default rest state for stamped paper: brand mark, chips, cards, small-screen form."
+      },
+      {
+        "name": "sello-hover",
+        "value": "4px 4px 0 0 #141416",
+        "purpose": "Pressed-up stamp on card hover. Chips use 3px; desktop cards use 6px."
+      },
+      {
+        "name": "polaroid",
+        "value": "0 4px 6px rgba(0,0,0,0.05), 0 20px 35px rgba(44, 30, 20, 0.18)",
+        "purpose": "Hero photograph only. No other object may use this ambient stack."
+      },
+      {
+        "name": "hairline-lift",
+        "value": "0 1px 2px rgba(0,0,0,0.05)",
+        "purpose": "Desktop contact frame and desktop chips at rest. Never mix with blur ≥16px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for hover, menu, and stamp lift."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Color, opacity, and active scale."
+      },
+      {
+        "name": "duration",
+        "value": "280ms",
+        "purpose": "Stamp translate, menu sheet, form chrome."
+      }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "360px" },
+      { "name": "menu", "value": "768px" },
+      { "name": "desktop", "value": "769px" },
+      { "name": "projects-3", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Header “Escríbeme”: lacre pill, the contact ask.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#contacto\">Escríbeme</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; background: var(--color-accent, #e11d48); color: var(--color-white, #fff); font-family: var(--font-sans, system-ui, sans-serif); font-size: 13px; font-weight: 500; line-height: 16px; border-radius: 9999px; text-decoration: none; white-space: nowrap; transition: background-color 280ms cubic-bezier(0.16, 1, 0.3, 1), transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { background: var(--color-accent-soft, #ed456a); color: var(--color-surface, #faf7f2); outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Hero CTA",
+      "kind": "button",
+      "refersTo": "button-hero",
+      "description": "Ink pill for “Ver proyectos”: stamp layer type, cyan live dot.",
+      "html": "<a class=\"ds-btn-hero\" href=\"#proyectos\"><span class=\"ds-btn-hero-dot\" aria-hidden=\"true\"></span><span>Ver proyectos</span><span aria-hidden=\"true\">↓</span></a>",
+      "css": ".ds-btn-hero { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--color-text-primary, #141416); color: #fff; font-family: var(--font-mono, ui-monospace, monospace); font-size: 12px; font-weight: 500; border-radius: 9999px; text-decoration: none; width: fit-content; transition: opacity 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-hero:hover, .ds-btn-hero:focus-visible { opacity: 0.85; color: #fff; outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; } .ds-btn-hero:active { transform: scale(0.98); } .ds-btn-hero-dot { width: 8px; height: 8px; border-radius: 9999px; background: #22d3ee; flex-shrink: 0; }"
+    },
+    {
+      "name": "Submit Button",
+      "kind": "button",
+      "refersTo": "button-submit",
+      "description": "Form submit: lacre, mono label, full width on small paper.",
+      "html": "<button class=\"ds-btn-submit\" type=\"submit\">Enviar mensaje <span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px 16px; background: var(--color-accent, #e11d48); color: #fff; border: none; border-radius: 8px; font-family: var(--font-mono, ui-monospace, monospace); font-size: 12px; font-weight: 700; line-height: 16px; letter-spacing: 0.3px; cursor: pointer; box-shadow: 0 1px 1px color-mix(in srgb, var(--color-accent, #e11d48) 25%, transparent); transition: background-color 280ms cubic-bezier(0.16, 1, 0.3, 1), transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-submit:hover, .ds-btn-submit:focus-visible { background: var(--color-accent-soft, #ed456a); outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; } .ds-btn-submit:active { transform: scale(0.98); } .ds-btn-submit:disabled { cursor: wait; opacity: 0.72; transform: none; }"
+    },
+    {
+      "name": "Contact Chip",
+      "kind": "chip",
+      "refersTo": "chip-contact",
+      "description": "Footer channel chip: stamped paper, label + handle.",
+      "html": "<a class=\"ds-chip\" href=\"mailto:a.j.castro.b@gmail.com\"><span class=\"ds-chip-head\"><span class=\"ds-chip-dot\" aria-hidden=\"true\"></span><span class=\"ds-chip-label\">Email</span></span><span class=\"ds-chip-handle\">escríbeme</span></a>",
+      "css": ".ds-chip { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 11px; background: var(--color-white, #fff); border: 1px solid color-mix(in srgb, var(--color-text-primary, #141416) 80%, transparent); border-radius: 8px; box-shadow: 2px 2px 0 0 var(--color-text-primary, #141416); text-decoration: none; color: inherit; transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-chip:hover, .ds-chip:focus-visible { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 0 var(--color-text-primary, #141416); outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; } .ds-chip:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 0 var(--color-text-primary, #141416); } .ds-chip-head { display: flex; align-items: center; } .ds-chip-dot { width: 8px; height: 8px; border-radius: 9999px; background: #f59e0b; flex-shrink: 0; } .ds-chip-label { margin: 0 0 0 6px; font-family: var(--font-mono, ui-monospace, monospace); font-weight: 700; font-size: 11px; line-height: 16.5px; color: var(--color-text-primary, #141416); } .ds-chip-handle { margin: 2px 0 0; font-family: var(--font-mono, ui-monospace, monospace); font-size: 10px; line-height: 15px; color: var(--color-text-secondary, #57534e); }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Work tile: sello, index stamp, stack pill, “ver detalle”.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-meta\"><span class=\"ds-card-index\">01</span><span class=\"ds-card-stack\">Django</span></div><h3 class=\"ds-card-title\">TaskApp</h3><p class=\"ds-card-copy\">Gestión de tareas en Render. Django + UX clara y flujos diarios de equipo.</p><div class=\"ds-card-footer\"><a class=\"ds-card-link\" href=\"#\">ver detalle <span aria-hidden=\"true\">→</span></a></div></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; padding: 21px; background: var(--color-white, #fff); border: 1px solid color-mix(in srgb, var(--color-border, #d6d3d1) 90%, transparent); border-radius: 12px; box-shadow: 2px 2px 0 0 var(--color-text-primary, #141416); transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-card:hover, .ds-card:focus-within { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 0 var(--color-text-primary, #141416); } .ds-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; } .ds-card-index { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 24px; padding: 0 6px; background: var(--color-accent, #e11d48); color: #fff; font-family: var(--font-mono, ui-monospace, monospace); font-weight: 700; font-size: 12px; border-radius: 6px; } .ds-card-stack { padding: 3px 11px; background: var(--color-surface-muted, #fafaf9); border: 1px solid var(--color-border, #d6d3d1); border-radius: 9999px; font-family: var(--font-mono, ui-monospace, monospace); font-size: 11px; color: var(--color-text-secondary, #57534e); } .ds-card-title { margin: 0; font-family: var(--font-sans, system-ui, sans-serif); font-weight: 700; font-size: 18px; line-height: 28px; letter-spacing: -0.45px; color: var(--color-text-primary, #141416); } .ds-card-copy { margin: 6px 0 0; font-family: var(--font-sans, system-ui, sans-serif); font-size: 12px; line-height: 19.5px; color: var(--color-text-secondary, #57534e); } .ds-card-footer { margin-top: 16px; padding-top: 13px; border-top: 1px solid #f5f5f4; } .ds-card-link { font-family: var(--font-mono, ui-monospace, monospace); font-weight: 700; font-size: 12px; color: var(--color-accent, #e11d48); text-decoration: none; } .ds-card-link:hover, .ds-card-link:focus-visible { opacity: 0.85; outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form control: muted paper, recorte border, lacre on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Nombre</span><input class=\"ds-field-control\" type=\"text\" placeholder=\"Tu nombre o empresa\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; width: 100%; } .ds-field-label { font-family: var(--font-mono, ui-monospace, monospace); font-weight: 700; font-size: 11px; line-height: 16.5px; letter-spacing: 0.275px; text-transform: uppercase; color: var(--color-text-primary, #141416); } .ds-field-control { width: 100%; margin: 0; padding: 9px 13px 10px; background: var(--color-surface-muted, #fafaf9); border: 1px solid var(--color-border, #d6d3d1); border-radius: 6px; font-family: var(--font-sans, system-ui, sans-serif); font-size: 12px; line-height: 16px; color: var(--color-text-primary, #141416); appearance: none; } .ds-field-control::placeholder { color: #a8a29e; } .ds-field-control:hover { border-color: color-mix(in srgb, var(--color-text-primary, #141416) 35%, var(--color-border, #d6d3d1)); } .ds-field-control:focus { outline: none; border-color: var(--color-accent, #e11d48); background: var(--color-white, #fff); }"
+    },
+    {
+      "name": "Brand Mark",
+      "kind": "custom",
+      "refersTo": "brand-mark",
+      "description": "Logo tile: 2px ink border, 2px radius, sello offset.",
+      "html": "<a class=\"ds-brand\" href=\"/\" aria-label=\"ajcastrob\">ajcastrob</a>",
+      "css": ".ds-brand { display: inline-flex; align-items: center; min-width: 130px; height: 40px; padding: 8.5px 12px; background: var(--color-white, #fff); border: 2px solid var(--color-text-primary, #141416); border-radius: 2px; box-shadow: 2px 2px 0 0 var(--color-text-primary, #141416); font-family: var(--font-mono, ui-monospace, monospace); font-weight: 700; font-size: 12px; color: var(--color-text-primary, #141416); text-decoration: none; } .ds-brand:hover, .ds-brand:focus-visible { outline: 2px solid var(--color-accent, #e11d48); outline-offset: 3px; }"
+    },
+    {
+      "name": "Stack Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Hero tool pill on tinted paper. Names a stack, not a feature.",
+      "html": "<span class=\"ds-badge\">Django</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; background: #f5efea; color: #44403c; font-family: var(--font-sans, system-ui, sans-serif); font-size: 12px; font-weight: 500; line-height: 1.4; white-space: nowrap; }"
+    },
+    {
+      "name": "Polaroid",
+      "kind": "custom",
+      "refersTo": "brand-mark",
+      "description": "Hero photograph: white frame, washi, Caveat caption. Ambient shadow only here.",
+      "html": "<figure class=\"ds-polaroid\"><span class=\"ds-polaroid-washi\" aria-hidden=\"true\"></span><div class=\"ds-polaroid-photo\"></div><figcaption class=\"ds-polaroid-caption\">Código &amp; Contenidos</figcaption></figure>",
+      "css": ".ds-polaroid { position: relative; margin: 0; width: 220px; padding: 14px 12px 20px; background: #fff; border-radius: 2px; box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 20px 35px rgba(44, 30, 20, 0.18); } .ds-polaroid-photo { background: #f5f5f4; aspect-ratio: 211 / 230; } .ds-polaroid-caption { margin-top: 12px; font-family: var(--font-hand, cursive); font-weight: 700; font-size: 24px; color: #44403c; text-align: center; line-height: 1.2; } .ds-polaroid-washi { position: absolute; top: 0; right: -24px; width: 90px; height: 22px; background: rgba(224, 231, 240, 0.75); border-radius: 2px; transform: rotate(20deg); pointer-events: none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La nota pegada al monitor",
+    "overview": "This is not a studio site and not a product dashboard. It is a working note someone stuck next to the screen: a polaroid, a handwritten line, a stamp, a place to write back. Density is comfortable, never sparse-luxury and never packed-SaaS. Surfaces are paper. Interactive objects are paper that has been stamped. The photo is the only object that is allowed to look like an object in space.\n\nThe system is directo, cercano, práctico. Plus Jakarta Sans carries the offer. Caveat carries closeness (kickers, captions, the contact hook). Space Mono (and JetBrains Mono from 769px up) carries the stamp layer: labels, chips, form labels, the brand of “this was labeled by a person who ships.” Rose lacre is the sealing wax, not the wallpaper.\n\nIt explicitly rejects generic dark “passionate developer” portfolios; glassmorphism, gradient text, and SaaS landing templates (hero metric, identical feature cards, tracked eyebrows on every section); agency-slick motion reels that look expensive and unmaintainable; student-template energy (empty About, placeholder title, craft as costume). It does not replace the polaroid / handwriting / offset-chip language with editorial-magazine serif or terminal-native dark mode.",
+    "keyCharacteristics": [
+      "Paper body (`#faf7f2`), ink type (`#141416`), lacre accent (`#e11d48`) used as a seal, not a wash",
+      "Hard offset stamp (`2px 2px 0` ink) on chips, cards, and the brand mark",
+      "Polaroid as the only ambient-shadow object (washi tape, handwritten caption)",
+      "Four type voices, no fifth: grotesque, hand, Space Mono, JetBrains Mono at desktop",
+      "Contact objects (form, “Escríbeme”, footer chips) share the stamp language of the work",
+      "Split at 769px: desktop hardens ink to `#1e1e24` and 2px borders; it is the same note, pressed flatter, not a second brand"
+    ],
+    "rules": [
+      {
+        "name": "The Lacre Rule",
+        "body": "Rosa de lacre occupies ≤10% of any screen. If a layout needs more red, the layout is wrong; reduce the object, do not wash the page.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper Is the Brand Rule",
+        "body": "New surfaces inherit papel de recado, blanco, or mesa. A dark canvas, a cool gray app shell, or a cream that is more beige than this paper is a different product.",
+        "section": "colors"
+      },
+      {
+        "name": "The Four Voices Rule",
+        "body": "Plus Jakarta Sans, Caveat, Space Mono, JetBrains Mono. A fifth family is forbidden. Do not add a display serif “for prestige” or a second grotesque.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hand Is a Note Rule",
+        "body": "Caveat is a recado: kicker, caption, contact hook, footer tagline. If the hand is doing the job of a heading system, it has escaped the monitor.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stamp Layer Rule",
+        "body": "Uppercase tracked labels are a stamp, not section grammar. One stamp per region is voice; a tiny uppercase eyebrow above every section is the SaaS template this system rejects.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sello Rule",
+        "body": "If it is clickable paper (chip, card, brand, form tile), it gets a hard ink offset, not a diffuse drop shadow. Blur on those objects is prohibited.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Polaroid Exception",
+        "body": "Ambient shadow is exclusive to the photograph. Clone it onto a card and the note becomes a template.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ghost-Card Ban",
+        "body": "Never pair `border: 1px solid` with `box-shadow` blur ≥16px on the same element. The polaroid has shadow and no ink border; stamped objects have ink offset and no blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the polaroid, Caveat recados, and offset-chip sello as the material language of the note on the monitor.",
+      "Do treat contact as a visual object equal to the work: lacre CTA, stamped form, stamped chips.",
+      "Do set body copy in tinta (`#141416`) or tinta de piedra (`#57534e`) on papel de recado, max 65ch, 15–18px.",
+      "Do honor `prefers-reduced-motion`: kill translate, scale, and staggered project reveal; keep a crossfade or instant state.",
+      "Do use Spanish in the interface. First person. Name the work.",
+      "Do cap display type at 48px and letter-spacing at ≥ `-0.04em` (hero uses about `-0.025em`).",
+      "Do put new interactive paper on the sello (hard offset), not on a new elevation idea."
+    ],
+    "donts": [
+      "Don't build generic dark “passionate developer” portfolios with a photo, a stack grid, and no point of view.",
+      "Don't use glassmorphism, gradient text, or SaaS landing templates (hero metric, identical feature cards, tracked eyebrows on every section).",
+      "Don't ship agency-slick motion reels that look expensive and unmaintainable.",
+      "Don't leave student-template energy that undercuts the hire: empty “About”, placeholder title, craft as costume. The document title must not say “Astro”.",
+      "Don't replace the polaroid / handwriting / offset-chip language with editorial-magazine serif or terminal-native dark mode.",
+      "Don't use a `border-left` or `border-right` greater than 1px as a colored accent.",
+      "Don't pair a 1px border with a blur ≥16px on cards or buttons.",
+      "Don't round cards or sections to 24px or more (16px is the contact-frame ceiling).",
+      "Don't add a fifth font family. Space Mono and JetBrains Mono already split the stamp layer.",
+      "Don't wash a section in lacre. The Lacre Rule is 10%.",
+      "Don't write body copy in all caps, Caveat, or marketing verbs (unleash, seamless, world-class).",
+      "Don't nest cards. A stamp on paper is enough."
+    ]
+  }
+}
