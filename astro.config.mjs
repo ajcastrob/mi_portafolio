@@ -2,6 +2,8 @@
 import { defineConfig, fontProviders } from "astro/config";
 import supersvgPlugin from "vite-plugin-supersvg";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -42,4 +44,6 @@ export default defineConfig({
       fallbacks: ["monospace"],
     },
   ],
+
+  integrations: [react()],
 });

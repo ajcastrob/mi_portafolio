@@ -3,13 +3,13 @@ import BasicLayout from "@/layouts/BasicLayout.astro"
 import HomeHero from "@/components/hero/HomeHero.astro"
 import AboutText from "@/components/about/AboutText.astro"
 import Proyectos from "@/components/proyectos/Proyectos.astro"
-import ContactForm from "@/components/form/ContactForm.astro"
+import ContactForm from "@/components/react/ContactForm.jsx"
 ---
 
 <BasicLayout>
     <HomeHero />
     <AboutText />
-    <ContactForm />
+    <ContactForm client:load />
     <Proyectos />
 </BasicLayout>
 
