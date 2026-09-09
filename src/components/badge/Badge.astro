@@ -4,10 +4,13 @@ const { titleBadge, variant } = Astro.props
 
 <style>
   .home-hero__badge {
+    display: inline-flex;
+    width: auto;
     padding: 4px 12px;
     border-radius: var(--radius-pill);
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 12px;
+    font-weight: 700;
     line-height: 1.4;
     white-space: nowrap;
   }

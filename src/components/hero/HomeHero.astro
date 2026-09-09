@@ -8,387 +8,215 @@ import Badge from "@/components/badge/Badge.astro"
   .home-hero {
     width: 100%;
     max-width: 100%;
-    padding: 28px var(--space-24) var(--space-40);
+    padding: var(--space-32) var(--space-24) var(--space-48);
   }
 
-  .home-hero__grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    row-gap: var(--space-24);
-    max-width: var(--max-width-content);
-    margin-inline: auto;
-    align-items: start;
-  }
-
-  /* Kicker */
-  .home-hero__kicker {
+  .home-hero__inner {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--space-8);
+    text-align: center;
+    max-width: 52rem;
+    margin-inline: auto;
   }
 
-  .home-hero__kicker-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-pill);
-    background-color: var(--color-accent);
-    flex-shrink: 0;
+  .home-hero__figure {
+    position: relative;
+    width: min(11rem, 72vw);
+    margin: 0 0 var(--space-32);
+    padding: 14px 12px 18px;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 20px 35px rgba(44, 30, 20, 0.18);
+    transform: rotate(-1.6deg);
   }
 
-  .home-hero__kicker-text {
+  .home-hero__washi {
+    position: absolute;
+    top: -8px;
+    right: -16px;
+    width: 5.5rem;
+    height: 22px;
+    background: color-mix(in srgb, var(--color-washi) 82%, transparent);
+    border-radius: var(--radius);
+    transform: rotate(18deg);
+    pointer-events: none;
+  }
+
+  .home-hero__image-wrap {
+    background: var(--color-surface-muted);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .home-hero__figure :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .home-hero__caption {
+    margin-top: 10px;
     font-family: var(--font-hand);
     font-weight: 700;
-    font-size: 20px;
-    color: var(--color-accent);
+    font-size: 1.375rem;
     line-height: 1.2;
+    color: var(--color-text-primary);
   }
 
-  /* Heading */
+  .home-hero__kicker {
+    margin: 0 0 var(--space-12);
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--color-accent);
+  }
+
   .home-hero__title {
+    margin: 0 auto;
+    max-width: 16ch;
     font-family: var(--font-sans);
     font-weight: 800;
-    font-size: 32px;
-    line-height: 1.12;
-    letter-spacing: -0.8px;
+    font-size: clamp(2rem, 1.2rem + 3.2vw, 3.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
     color: var(--color-text-primary);
-    margin: 0;
+    text-wrap: balance;
   }
 
-  /* Subtitle */
   .home-hero__copy {
+    margin: var(--space-24) auto 0;
+    max-width: 36ch;
     font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 1.125rem;
+    line-height: 1.45;
     color: var(--color-text-secondary);
+    text-wrap: pretty;
   }
 
   .home-hero__copy p {
     margin: 0;
   }
 
-  /* CTA Button */
+  .home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-16);
+    margin-top: var(--space-32);
+  }
+
   .home-hero__cta {
     display: inline-flex;
     align-items: center;
-    position: relative;
-    gap: 8px;
-    background-color: var(--color-text-primary);
-    color: var(--color-white);
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 12px;
+    justify-content: center;
     min-height: 44px;
-    padding: 10px 20px;
+    padding: 0 22px;
+    background: var(--color-accent);
+    color: var(--color-white);
     border-radius: var(--radius-pill);
-    text-decoration: none;
-    width: fit-content;
-    transition: opacity var(--duration-fast) var(--ease-out);
-
-    &:hover {
-      opacity: 0.85;
-      color: var(--color-white);
-    }
-    &:after{
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: #ffffff20;
-      border-radius: 9999px;
-      transition: all .35s;
-    }
-    &:hover:after{
-      width: 100%;
-    }   
-    &:active {
-    transform: scale(0.98);
-    }
-}
-
-  .home-hero__cta-accent {
-    width: 8px;
-    height: 8px;
-    border-radius: 9999px;
-    background-color: var(--color-accent);
-    flex-shrink: 0;
-    animation: pulse 2s infinite;
+    box-shadow: var(--shadow-sello);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      background-color var(--duration) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
   }
 
-  .home-hero__cta-arrow {
-    font-size: 12px;
-    }
+  .home-hero__cta:hover,
+  .home-hero__cta:focus-visible {
+    background: var(--color-accent-deep);
+    color: var(--color-white);
+  }
 
-  /* Tech Stack Badges */
-  .home-hero__badges-container {
+  .home-hero__cta:active {
+    transform: scale(0.98);
+  }
+
+  .home-hero__alt {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .home-hero__alt:hover,
+  .home-hero__alt:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .home-hero__stamps {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-8);
+    margin-top: var(--space-32);
   }
 
-  /* Polaroid Figure */
-  .home-hero__figure {
-    position: relative;
-    background: var(--color-white);
-    padding: 14px 12px 20px 12px;
-    border-radius: 2px;
-    width: fit-content;
-    max-width: 335px;
-    margin: 0;
-    place-self: center;
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.05),
-      0 20px 35px rgba(44, 30, 20, 0.18);
-  }
-
-  .home-hero__figure::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 200, 150, 0.12) 0%, transparent 50%);
-    pointer-events: none;
-    border-radius: inherit;
-  }
-
-  .home-hero__image-wrap {
-    background: var(--color-surface-muted);
-    border-radius: 0;
-    overflow: hidden;
-    aspect-ratio: 211 / 230;
-  }
-
-  .home-hero__figure :global(img) {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-  }
-
-  .home-hero__caption {
-    font-family: var(--font-hand);
-    font-weight: 700;
-    font-size: 24px;
-    color: var(--color-text-secondary);
-    text-align: center;
-    margin-top: 12px;
-    line-height: 1.2;
-  }
-
-  .home-hero__washi {
-    position: absolute;
-    top: 0px;
-    right: -30px;
-    width: 113px;
-    height: 28px;
-    background: color-mix(in srgb, var(--color-washi) 75%, transparent);
-    border-radius: 2px;
-    transform: rotate(20deg);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .home-hero__washi--bottom {
-    display: none;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(0.9);
-     }
-    50% {
-      transform: scale(1.1);
-     }
-    100%{
-      transform: scale(0.9);
-    } 
-  }
-
-  /* Desktop Layout (≥769px) */
-  @media (prefers-reduced-motion: reduce) {
-    .home-hero__cta-accent {
-      animation: none;
-    }
-
-    .home-hero__cta:after,
-    .home-hero__cta:hover:after {
-      transition: none;
-      width: 0;
-    }
+  .home-hero__stamps :global(.home-hero__badge) {
+    display: inline-flex;
+    width: auto;
   }
 
   @media (min-width: 769px) {
     .home-hero {
-      padding: 48px var(--space-40) var(--space-64);
+      padding: var(--space-40) var(--space-40) var(--space-64);
     }
 
-    .home-hero__grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 48px;
-      align-items: start;
-    }
-
-    /* Kicker - Desktop */
-    .home-hero__kicker-text {
-      font-size: 30px;
-      color: var(--color-accent);
-    }
-
-    .home-hero__kicker-dot {
-      background-color: var(--color-accent);
-    }
-
-    /* Heading - Desktop */
-    .home-hero__title {
-      font-size: 48px;
-      line-height: 1.0;
-    }
-
-    /* Subtitle - Desktop */
-    .home-hero__copy {
-      font-size: 18px;
-      line-height: 28px;
-      color: var(--color-text-secondary);
-    }
-
-    /* CTA Button - Desktop */
-    .home-hero__cta {
-      font-weight: 400;
-      font-size: 14px;
-      padding: 12px 24px;
-      border-radius: 9999px;
-      gap: 12px;
-    }
-
-    .home-hero__cta-accent {
-      border-radius: 9999px;
-    }
-
-    /* Badges - Desktop */
-    .home-hero__badges-container {
-      flex-wrap: nowrap;
-      gap: 8px;
-    }
-
-    /* Polaroid - Desktop */
     .home-hero__figure {
-      width: 100%;
-      max-width: 347px;
-      padding: 16px 16px 21px 16px;
+      width: 11rem;
     }
 
-    .home-hero__image-wrap {
-      background: var(--color-surface-muted);
-      aspect-ratio: 1 / 1;
-    }
-
-    .home-hero__figure :global(img) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .home-hero__caption {
-      font-weight: 600;
-      color: var(--color-text-primary);
-    }
-
-    .home-hero__washi {
-      width: 112px;
-      height: 26px;
-      right: -12px;
-      background: var(--color-washi);
-    }
-
-    .home-hero__washi--bottom {
-      display: block;
-      position: absolute;
-      bottom: -3px;
-      left: -34px;
-      top: auto;
-      right: auto;
-      width: 82px;
-      height: 28px;
-      background: var(--color-washi);
-      border-radius: 2px;
-      transform: rotate(45deg);
-    }
-
-    /* Grid positioning for desktop */
     .home-hero__kicker {
-      grid-column: 1;
-      grid-row: 1;
+      font-size: 1.875rem;
     }
+  }
 
-    .home-hero__title {
-      grid-column: 1;
-      grid-row: 2;
-    }
-
-    .home-hero__copy {
-      grid-column: 1;
-      grid-row: 3;
-    }
-
-    .home-hero__cta {
-      grid-column: 1;
-      grid-row: 4;
-    }
-
-    .home-hero__badges-container {
-      grid-column: 1;
-      grid-row: 5;
-    }
-
+  @media (prefers-reduced-motion: no-preference) {
     .home-hero__figure {
-      grid-column: 2;
-      grid-row: 1 / span 5;
-      justify-self: center;
+      animation: hero-settle 0.8s var(--ease-out) both;
+    }
+  }
+
+  @keyframes hero-settle {
+    from {
+      transform: rotate(-1.6deg) translateY(12px);
+    }
+    to {
+      transform: rotate(-1.6deg) translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero__cta,
+    .home-hero__cta:active {
+      transition: none;
+      transform: none;
     }
   }
 </style>
 
-<section class="home-hero">
-  <div class="home-hero__grid">
-    <div class="home-hero__kicker">
-      <span class="home-hero__kicker-dot" aria-hidden="true"></span>
-      <span class="home-hero__kicker-text">Software + comunicación</span>
-    </div>
-
-    <h1 class="home-hero__title">Construyo webs que tu equipo puede mantener.</h1>
-
-    <div class="home-hero__copy">
-      <p>
-        Soy comunicador social y desarrollador freelance. Combino mi formación  para construir herramientas que la gente realmente usa.
-      </p>
-    </div>
-
-    <a class="home-hero__cta" href="/#proyectos">
-      <span class="home-hero__cta-accent" aria-hidden="true"></span>
-      <span>Ver proyectos</span>
-      <span class="home-hero__cta-arrow" aria-hidden="true">↓</span>
-    </a>
-
-    <div class="home-hero__badges-container">
-      <Badge titleBadge="Comunicación" variant="comunicacion" />
-      <Badge titleBadge="Django" variant="django" />
-      <Badge titleBadge="Python" variant="python" />
-      <Badge titleBadge="Astro" variant="astro" />
-      <Badge titleBadge="n8n" variant="n8n" />
-      <Badge titleBadge="React" variant="react" />
-    </div>
-
+<section class="home-hero" id="home-hero">
+  <div class="home-hero__inner">
     <figure class="home-hero__figure">
       <span class="home-hero__washi" aria-hidden="true"></span>
-      <span class="home-hero__washi home-hero__washi--bottom" aria-hidden="true"></span>
       <div class="home-hero__image-wrap">
         <Image
           src={personal}
           alt="Fotografía de José Castro"
-          widths={[480, 680, 960, 1360, 1600]}
-          sizes="(max-width: 800px) calc(100vw - 32px), 680px"
+          widths={[320, 480, 680]}
+          sizes="176px"
           format="webp"
           loading="eager"
           fetchpriority="high"
@@ -397,5 +225,24 @@ import Badge from "@/components/badge/Badge.astro"
       </div>
       <figcaption class="home-hero__caption">Código &amp; Contenidos</figcaption>
     </figure>
+
+    <p class="home-hero__kicker">Software + comunicación</p>
+    <h1 class="home-hero__title">Construyo webs que tu equipo puede mantener.</h1>
+    <div class="home-hero__copy">
+      <p>
+        Comunicador y desarrollador freelance. Hago herramientas que la gente usa y el equipo puede seguir.
+      </p>
+    </div>
+
+    <div class="home-hero__actions">
+      <a class="home-hero__cta" href="/#contacto">Escríbeme</a>
+      <a class="home-hero__alt" href="/#proyectos">Ver proyectos ↓</a>
+    </div>
+
+    <div class="home-hero__stamps">
+      <Badge titleBadge="Django" variant="django" />
+      <Badge titleBadge="Astro" variant="astro" />
+      <Badge titleBadge="n8n" variant="n8n" />
+    </div>
   </div>
 </section>
