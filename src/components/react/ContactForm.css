@@ -99,7 +99,7 @@
   margin: 0;
   padding: 9px 13px 10px;
   background: var(--color-surface-muted);
-  border: var(--border-width) solid var(--color-border);
+  border: var(--border-width) solid var(--color-border-ui);
   border-radius: 6px;
   font-family: var(--font-sans);
   font-weight: 400;
@@ -200,7 +200,7 @@
 
 .contact-form__submit:hover,
 .contact-form__submit:focus-visible {
-  background: var(--color-accent-soft);
+  background: var(--color-accent-deep);
   color: var(--color-white);
 }
 
@@ -308,7 +308,7 @@
   .contact-form__textarea {
     padding: 12px 17px;
     background: var(--color-surface-muted);
-    border-color: var(--color-border);
+    border-color: var(--color-border-ui);
     border-radius: var(--radius-md);
   }
 

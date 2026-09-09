@@ -6,7 +6,8 @@ const { linkLogo } = Astro.props
   .header__brand{
     display: flex;
     width: 130px;
-    height: 40px;
+    min-height: 44px;
+    height: 44px;
     background: var(--color-white);
     flex-direction: column;
     padding: 8.5px 12px 7.5px 12px;
@@ -23,8 +24,8 @@ const { linkLogo } = Astro.props
 </style>
 
 
-<a class="header__brand" href="/">
-  <svg class="header__logo" >
+<a class="header__brand" href="/" aria-label="ajcastrob, inicio">
+  <svg class="header__logo" aria-hidden="true" focusable="false">
     <use href={linkLogo}></use>
   </svg>
 </a>

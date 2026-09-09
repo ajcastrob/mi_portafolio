@@ -61,8 +61,8 @@ const closeIcon = "/assets/icons/menu.svg#close"
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       padding: 0;
       background: transparent;
       border: none;
@@ -94,6 +94,12 @@ const closeIcon = "/assets/icons/menu.svg#close"
     .header__end {
       position: relative;
       z-index: calc(var(--z-header) + 2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .header__toggle {
+        transition: none;
+      }
     }
   }
 </style>
@@ -128,14 +134,27 @@ const closeIcon = "/assets/icons/menu.svg#close"
 <script>
   const toggle = document.querySelector('[data-menu-toggle]');
   const nav = document.querySelector('#site-nav');
+  const main = document.getElementById('contenido');
+  const footer = document.getElementById('sitio-footer');
   const BREAKPOINT = 768;
+
+  function getFocusable() {
+    const items = [];
+    if (toggle instanceof HTMLElement) items.push(toggle);
+    nav?.querySelectorAll('a, button').forEach((el) => {
+      if (el instanceof HTMLElement) items.push(el);
+    });
+    return items;
+  }
 
   function openMenu() {
     nav?.setAttribute('data-menu-open', '');
     toggle?.setAttribute('aria-expanded', 'true');
     toggle?.setAttribute('aria-label', 'Cerrar menú');
     toggle?.classList.add('is-open');
-    // Focus first link
+    main?.setAttribute('inert', '');
+    footer?.setAttribute('inert', '');
+    document.body.style.overflow = 'hidden';
     const firstLink = nav?.querySelector('a');
     firstLink?.focus();
   }
@@ -145,6 +164,9 @@ const closeIcon = "/assets/icons/menu.svg#close"
     toggle?.setAttribute('aria-expanded', 'false');
     toggle?.setAttribute('aria-label', 'Abrir menú');
     toggle?.classList.remove('is-open');
+    main?.removeAttribute('inert');
+    footer?.removeAttribute('inert');
+    document.body.style.overflow = '';
   }
 
   function toggleMenu() {
@@ -155,18 +177,33 @@ const closeIcon = "/assets/icons/menu.svg#close"
     }
   }
 
-  // Hamburger click
   toggle?.addEventListener('click', toggleMenu);
 
-  // Escape key closes
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav?.hasAttribute('data-menu-open')) {
+    const open = nav?.hasAttribute('data-menu-open');
+    if (!open) return;
+
+    if (e.key === 'Escape') {
       closeMenu();
       toggle?.focus();
+      return;
+    }
+
+    if (e.key !== 'Tab') return;
+    const items = getFocusable();
+    if (items.length === 0) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey && active === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 
-  // Close when clicking a nav link
   nav?.addEventListener('click', (e) => {
     const target = e.target;
     if (target instanceof HTMLElement && target.closest('a')) {
@@ -174,7 +211,6 @@ const closeIcon = "/assets/icons/menu.svg#close"
     }
   });
 
-  // Close on resize to desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth > BREAKPOINT && nav?.hasAttribute('data-menu-open')) {
       closeMenu();
