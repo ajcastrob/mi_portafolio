@@ -2,6 +2,10 @@
 import { Image } from "astro:assets"
 import personal from "@/assets/personal.webp"
 import Badge from "@/components/badge/Badge.astro"
+
+const djangoIcon = "/assets/icons/stack.svg#django"
+const astroIcon = "/assets/icons/stack.svg#astro"
+const n8nIcon = "/assets/icons/stack.svg#n8n"
 ---
 
 <style>
@@ -240,9 +244,9 @@ import Badge from "@/components/badge/Badge.astro"
     </div>
 
     <div class="home-hero__stamps">
-      <Badge titleBadge="Django" variant="django" />
-      <Badge titleBadge="Astro" variant="astro" />
-      <Badge titleBadge="n8n" variant="n8n" />
+      <Badge titleBadge="Django" variant="django" iconStack={djangoIcon} />
+      <Badge titleBadge="Astro" variant="astro" iconStack={astroIcon} />
+      <Badge titleBadge="n8n" variant="n8n" iconStack={n8nIcon} />
     </div>
   </div>
 </section>

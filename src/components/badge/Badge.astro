@@ -1,10 +1,12 @@
 ---
-const { titleBadge, variant } = Astro.props
+const { titleBadge, variant, iconStack } = Astro.props
 ---
 
 <style>
   .home-hero__badge {
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     width: auto;
     padding: 4px 12px;
     border-radius: var(--radius-pill);
@@ -27,6 +29,14 @@ const { titleBadge, variant } = Astro.props
     color: var(--color-text-primary);
   }
 
+
+  .header__toggle-icon {
+    width: var(--font-size-body);
+    height: var(--font-size-body);
+    border-radius: 50%;
+  }
+
+
   @media (min-width: 769px) {
     .home-hero__badge {
       font-family: var(--font-mono);
@@ -40,4 +50,7 @@ const { titleBadge, variant } = Astro.props
 
 <div class:list={["home-hero__badge", variant && `home-hero__badge--${variant}`]}>
   {titleBadge}
+  <svg class="header__toggle-icon" aria-hidden="true" focusable="false" viewBox="0 0 50 50" >
+    <use href={iconStack}></use>
+  </svg>
 </div>
