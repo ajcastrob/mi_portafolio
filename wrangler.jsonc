@@ -1,7 +1,20 @@
 {
   "name": "mi-portafolio",
   "compatibility_date": "2026-09-10",
+  "main": "./worker/index.js",
   "assets": {
     "directory": "./dist",
+    "run_worker_first": ["/api/"],
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mi-portafolio-leads",
+      "database_id": "6e1f2620-9f11-482c-a98c-157a1d3f1982",
+    },
+  ],
+  "vars": {
+    "CONTACT_TO": "a.j.castro.b@gmail.com",
+    "CONTACT_FROM": "Portafolio <onboarding@resend.dev>",
   },
 }

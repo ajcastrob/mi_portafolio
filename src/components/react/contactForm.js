@@ -4,7 +4,6 @@ export const initialState = {
   fieldErrors: {},
 };
 
-const FORMSPREE = import.meta.env.PUBLIC_URL_FORMSPREE;
 const CONTACT_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function isPhone(value) {
@@ -37,7 +36,7 @@ export async function submitContact(_prev, formData) {
   }
 
   try {
-    const res = await fetch(FORMSPREE, {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: { Accept: "application/json" },
       body: formData,
